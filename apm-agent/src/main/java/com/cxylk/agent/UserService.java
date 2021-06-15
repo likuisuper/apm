@@ -10,4 +10,10 @@ public class UserService {
     public void sayHello(){
         System.out.println("hello word");
     }
+
+    public String  sayHi(String name,int age,Object other) throws InterruptedException {
+        Thread.sleep(100);
+        System.out.println("hello hi");
+        return null;
+    }
 }
