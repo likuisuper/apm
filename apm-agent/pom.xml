@@ -56,7 +56,7 @@
                             <Project-name>${project.name}</Project-name>
                             <Project-version>${project.version}</Project-version>
                             <Boot-Class-Path>javassist-3.18.1-GA.jar</Boot-Class-Path>
-                            <Premain-Class>com.cxylk.agent.AgentMain</Premain-Class>
+                            <Premain-Class>com.cxylk.agent.C3P0Agent</Premain-Class>
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
                             <Can-Retransform-Classes>true</Can-Retransform-Classes>
                         </manifestEntries>
