@@ -1,5 +1,6 @@
-package com.cxylk.agent;
+package com.cxylk.test;
 
+import com.cxylk.agent.UserService;
 import javassist.*;
 import org.junit.Test;
 
@@ -14,7 +15,7 @@ import java.nio.file.Files;
  * @Date 2021/6/15 16:16
  **/
 public class JavassistTest {
-    @Test
+//    @Test
     public void test() throws NotFoundException, CannotCompileException, InterruptedException, IOException {
         //类池，往类池装载类。有两种写法
         //1.全写
