@@ -1,5 +1,6 @@
 package com.cxylk.agent;
 
+import com.cxylk.agent.collect.HttpCollect;
 import com.cxylk.agent.collect.ServiceCollect;
 
 import java.lang.instrument.Instrumentation;
@@ -13,5 +14,7 @@ import java.lang.instrument.Instrumentation;
 public class ApmAgent {
     public static void premain(String args, Instrumentation instrumentation){
         new ServiceCollect(args).transform(instrumentation);
+        //加入HTTP采集器
+        new HttpCollect().transform(instrumentation);
     }
 }

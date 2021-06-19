@@ -12,6 +12,8 @@
         <module>apm-agent</module>
         <module>agent-01</module>
         <module>agent-02</module>
+        <module>apm-web</module>
+        <module>apm-web</module>
     </modules>
 
     <build>

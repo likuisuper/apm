@@ -8,7 +8,7 @@ package com.cxylk.agent;
  **/
 public class UserService {
     public void sayHello(){
-        int i=1/0;
+//        int i=1/0;
         System.out.println("hello word");
     }
 
