@@ -38,6 +38,7 @@
               <artifactSet>
                 <includes>
                   <include>org.javassist:javassist</include>
+                  <include>com.alibaba:fastjson</include>
                 </includes>
               </artifactSet>
               <transformers>
@@ -79,7 +80,7 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.32</version>
+      <version>8.0.17</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

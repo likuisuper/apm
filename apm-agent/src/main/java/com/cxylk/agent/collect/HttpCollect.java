@@ -8,6 +8,7 @@ import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.Instrumentation;
 import java.lang.reflect.Method;
 import java.security.ProtectionDomain;
+import java.util.Arrays;
 import java.util.Map;
 
 /**
@@ -69,7 +70,7 @@ public class HttpCollect {
 
     // url,client IP
     public static HttpStatistics begin(Object args[]) {
-        System.out.println(args);
+        System.out.println(Arrays.toString(args));
 
         //这样写是会报错找不到HttpServletRequest，因为双亲委派的机制
 //        HttpServletRequest request= (HttpServletRequest) args[0];

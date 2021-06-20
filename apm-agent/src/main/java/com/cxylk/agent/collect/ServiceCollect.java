@@ -1,5 +1,6 @@
 package com.cxylk.agent.collect;
 
+import com.alibaba.fastjson.JSON;
 import com.cxylk.agent.model.ServiceStatistics;
 import javassist.*;
 import java.io.IOException;
@@ -118,7 +119,7 @@ public class ServiceCollect {
     public static void end(Object obj){
         ServiceStatistics bean=(ServiceStatistics)obj;
         bean.setUseTime(System.currentTimeMillis()-bean.getBeginTime());
-        System.out.println(obj);
+        System.out.println(JSON.toJSONString(obj));
     }
 
     /**
