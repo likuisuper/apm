@@ -9,16 +9,40 @@ import java.io.Serializable;
  * @Date 2021/6/16 15:11
  **/
 public class ServiceStatistics extends Statistics implements Serializable {
-    //异常信息
+    private Long begin;
+    private Long end;
+    private Long useTime;
     private String errorMsg;
-    //异常类型
     private String errorType;
-    //服务名称
-    private String serviceName;
-    //服务简称
-    private String simpleName;
-    //方法名
-    private String methodName;
+    private String serviceName; //服务名称
+    private String simpleName; //服务简称
+    private String methodName; //方法名称
+
+    public Long getBegin() {
+        return begin;
+    }
+
+    public void setBegin(Long begin) {
+        this.begin = begin;
+    }
+
+    public Long getEnd() {
+        return end;
+    }
+
+    public void setEnd(Long end) {
+        this.end = end;
+    }
+
+
+
+    public Long getUseTime() {
+        return useTime;
+    }
+
+    public void setUseTime(Long useTime) {
+        this.useTime = useTime;
+    }
 
     public String getErrorMsg() {
         return errorMsg;
@@ -58,15 +82,5 @@ public class ServiceStatistics extends Statistics implements Serializable {
 
     public void setMethodName(String methodName) {
         this.methodName = methodName;
-    }
-
-    @Override
-    public String toString() {
-        return "ServiceStatistics{" + "errorMsg='" + errorMsg + '\'' +
-                ", errorType='" + errorType + '\'' +
-                ", serviceName='" + serviceName + '\'' +
-                ", simpleName='" + simpleName + '\'' +
-                ", methodName='" + methodName + '\'' +
-                '}'+super.toString();
     }
 }

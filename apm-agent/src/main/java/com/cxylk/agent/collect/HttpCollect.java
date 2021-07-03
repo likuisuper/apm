@@ -1,23 +1,22 @@
 package com.cxylk.agent.collect;
 
+import com.cxylk.agent.ApmContext;
+import com.cxylk.agent.ICollect;
 import com.cxylk.agent.model.HttpStatistics;
 import javassist.*;
 
-import javax.servlet.http.HttpServletRequest;
-import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.Instrumentation;
 import java.lang.reflect.Method;
-import java.security.ProtectionDomain;
 import java.util.Arrays;
 import java.util.Map;
 
 /**
  * @Classname HttpCollect
- * @Description TODO
+ * @Description http性能采集
  * @Author likui
  * @Date 2021/6/17 11:10
  **/
-public class HttpCollect {
+public class HttpCollect extends AbstractByteTransformCollect implements ICollect {
     // 采集目标
     // 1.DispatchServlet
     // 2.@control 下的方法
@@ -25,31 +24,13 @@ public class HttpCollect {
     private static final String TARGET_CLASS = "javax.servlet.http.HttpServlet";
     private static final String TARGET_METHOD = "service";
 
-    public HttpCollect() {
+    private static ApmContext context;
+
+    public HttpCollect(ApmContext context, Instrumentation instrumentation) {
+        super(instrumentation);
+        this.context = context;
     }
 
-    public void transform(Instrumentation instrumentation) {
-        instrumentation.addTransformer(new ClassFileTransformer() {
-            @Override
-            public byte[] transform(ClassLoader loader,
-                                    String className,
-                                    Class<?> classBeingRedefined,
-                                    ProtectionDomain protectionDomain,
-                                    byte[] classfileBuffer) {
-                if (!TARGET_CLASS.replaceAll("\\.", "/")
-                        .equals(className)) {
-                    return null;
-                }
-
-                try {
-                    return buildClass(loader);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-        });
-    }
 
     public byte[] buildClass(ClassLoader loader) throws Exception {
         ClassPool pool = new ClassPool();
@@ -86,7 +67,7 @@ public class HttpCollect {
     public static void end(Object obj) {
         HttpStatistics stat= (HttpStatistics) obj;
         ((HttpStatistics) obj).setUseTime(System.currentTimeMillis()-stat.getBeginTime());
-        System.out.println(stat);
+        context.submitCollectResult(stat);
     }
 
     public static void error(Throwable error,Object obj) {
@@ -106,6 +87,19 @@ public class HttpCollect {
             + "%s"
             + "        }\n"
             + "}\n";
+
+    @Override
+    public byte[] transform(ClassLoader loader, String className) throws Exception {
+        if (!TARGET_CLASS.equals(className)) {
+            return null;
+        }
+        try {
+            return buildClass(loader);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
     private static class HttpServletRequestAdapter {

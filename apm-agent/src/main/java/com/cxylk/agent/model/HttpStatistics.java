@@ -7,9 +7,16 @@ package com.cxylk.agent.model;
  * @Date 2021/6/17 11:09
  **/
 public class HttpStatistics extends Statistics{
+    private long beginTime;
     private String url;
     private String clientIp;
     private String error;
+    private long useTime;
+
+    public HttpStatistics() {
+        this.setModelType("http");
+    }
+
     public String getUrl() {
         return url;
     }
@@ -32,6 +39,22 @@ public class HttpStatistics extends Statistics{
 
     public void setError(String error) {
         this.error = error;
+    }
+
+    public long getUseTime() {
+        return useTime;
+    }
+
+    public void setUseTime(long useTime) {
+        this.useTime = useTime;
+    }
+
+    public long getBeginTime() {
+        return beginTime;
+    }
+
+    public void setBeginTime(long beginTime) {
+        this.beginTime = beginTime;
     }
 
     @Override

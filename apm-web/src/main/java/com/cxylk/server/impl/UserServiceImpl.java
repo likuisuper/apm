@@ -5,6 +5,9 @@ import com.cxylk.bean.User;
 import com.cxylk.server.UserService;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author cxylk
+ */
 @Service
 public class UserServiceImpl implements UserService {
 

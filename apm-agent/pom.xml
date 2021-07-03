@@ -49,6 +49,11 @@
             <version>8.0.17</version>
         </dependency>
         <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.2</version>
+        </dependency>
+        <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
             <version>0.9.1.2</version>
@@ -90,7 +95,7 @@
                                 <includes>
                                     <include>org.javassist:javassist</include>
                                     <!-- 将fastjson打包进apm-agent下 -->
-                                    <include>com.alibaba:fastjson</include>
+<!--                                    <include>com.alibaba:fastjson</include>-->
                                 </includes>
                             </artifactSet>
                             <transformers>

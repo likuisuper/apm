@@ -1,5 +1,7 @@
 package com.cxylk.agent.model;
 
+import java.util.ArrayList;
+
 /**
  * @Classname JdbcStatistics
  * @Description jdbc统计信息
@@ -7,48 +9,34 @@ package com.cxylk.agent.model;
  * @Date 2021/6/19 17:07
  **/
 public class JdbcStatistics extends Statistics implements java.io.Serializable {
-    public String error;
-    public String sql;
+    public Long begin;// 时间戳
+    public Long end;
+    public Long useTime;
+    // jdbc url
     public String jdbcUrl;
+    // sql 语句
+    public String sql;
+    // 数据库名称
+    public String databaseName;
 
-    public JdbcStatistics(String sql, String jdbcUrl) {
-        this.sql = sql;
-        this.jdbcUrl = jdbcUrl;
-    }
+    public String error;
+    public String errorType;
+    // 是否经过预处理
+    public String preman;
+
+    public ArrayList<ParamValues> params=new ArrayList();
+
 
     public JdbcStatistics() {
+
     }
 
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
-
-    public String getSql() {
-        return sql;
-    }
-
-    public void setSql(String sql) {
-        this.sql = sql;
-    }
-
-    public String getJdbcUrl() {
-        return jdbcUrl;
-    }
-
-    public void setJdbcUrl(String jdbcUrl) {
-        this.jdbcUrl = jdbcUrl;
-    }
-
-    @Override
-    public String toString() {
-        return "JdbcStatistics{" +
-                "error='" + error + '\'' +
-                ", sql='" + sql + '\'' +
-                ", jdbcUrl='" + jdbcUrl + '\'' +
-                '}'+super.toString();
+    public static class ParamValues{
+        public int index;
+        public Object value;
+        public ParamValues(int index, Object value) {
+            this.index = index;
+            this.value = value;
+        }
     }
 }

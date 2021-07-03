@@ -13,5 +13,6 @@ public class Hello {
     public void test(){
         String className="com.cxylk.agent";
         System.out.println(className.substring(className.lastIndexOf(".")));
+        System.out.println(System.getProperty("log"));
     }
 }

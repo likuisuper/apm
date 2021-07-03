@@ -1,39 +1,27 @@
 package com.cxylk.agent.model;
 
+import java.io.Serializable;
+
 /**
  * @Classname Statistics
  * @Description 应用外部环境采集
  * @Author likui
  * @Date 2021/6/16 15:07
  **/
-public class Statistics {
-    //开始时间
-    private long beginTime;
-    //用时
-    private long useTime;
-    //类型
+public class Statistics implements Serializable {
+    private long recordTime;
     private String modelType;
-    //主机ip
     private String hostIp;
-    //主机名
     private String hostName;
-    //追踪ID
+    //链路id
     private String traceId;
 
-    public long getBeginTime() {
-        return beginTime;
+    public long getRecordTime() {
+        return recordTime;
     }
 
-    public void setBeginTime(long beginTime) {
-        this.beginTime = beginTime;
-    }
-
-    public long getUseTime() {
-        return useTime;
-    }
-
-    public void setUseTime(long useTime) {
-        this.useTime = useTime;
+    public void setRecordTime(long recordTime) {
+        this.recordTime = recordTime;
     }
 
     public String getModelType() {
@@ -66,16 +54,5 @@ public class Statistics {
 
     public void setTraceId(String traceId) {
         this.traceId = traceId;
-    }
-
-    @Override
-    public String toString() {
-        return "Statistics{" + "beginTime=" + beginTime + "ms" +
-                ", useTime=" + useTime + "ms" +
-                ", modelType='" + modelType + '\'' +
-                ", hostIp='" + hostIp + '\'' +
-                ", hostName='" + hostName + '\'' +
-                ", traceId='" + traceId + '\'' +
-                '}';
     }
 }

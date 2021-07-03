@@ -38,7 +38,6 @@
               <artifactSet>
                 <includes>
                   <include>org.javassist:javassist</include>
-                  <include>com.alibaba:fastjson</include>
                 </includes>
               </artifactSet>
               <transformers>
@@ -72,6 +71,12 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.1.23</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-coyote</artifactId>
       <version>7.0.54</version>
@@ -81,6 +86,12 @@
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.17</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
